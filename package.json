@@ -1,0 +1,15 @@
+{
+    "private": true,
+    "workspaces": [
+        "frontend",
+        "frappe-ui"
+    ],
+    "type": "module",
+    "scripts": {
+        "postinstall": "cd frontend && yarn install",
+        "dev": "cd frontend && yarn dev",
+        "build": "cd frontend && yarn build"
+    },
+    "version": "0.0.0",
+    "dependencies": {}
+}
