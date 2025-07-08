@@ -22,16 +22,15 @@
 	</div>
 </template>
 <script setup lang="ts">
-import { useDark } from "@vueuse/core";
+import { computed } from "vue";
 import ace from "ace-builds";
 import "ace-builds/src-min-noconflict/ext-searchbox";
 import "ace-builds/src-min-noconflict/theme-chrome";
 import "ace-builds/src-min-noconflict/theme-twilight";
 import { onMounted, ref, watch } from "vue";
 
-const isDark = useDark({
-	attribute: "data-theme",
-});
+// Force light mode - never allow dark mode
+const isDark = computed(() => false);
 const props = withDefaults(
 	defineProps<{
 		modelValue?: Object | String | Array<any>;

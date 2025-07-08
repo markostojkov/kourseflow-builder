@@ -178,13 +178,12 @@ import builderProjectFolder from "@/data/builderProjectFolder";
 import useBuilderStore from "@/stores/builderStore";
 import { BuilderProjectFolder } from "@/types/Builder/BuilderProjectFolder";
 import { confirm } from "@/utils/helpers";
-import { useDark, useToggle } from "@vueuse/core";
+import { useToggle } from "@vueuse/core";
 import { createResource, Dialog, Dropdown, Tooltip, FeatherIcon } from "frappe-ui";
 import { TrialBanner } from "frappe-ui/frappe";
-import { ref } from "vue";
-const isDark = useDark({
-	attribute: "data-theme",
-});
+import { ref, computed } from "vue";
+// Force light mode - never allow dark mode
+const isDark = computed(() => false);
 const toggleDark = useToggle(isDark);
 const builderStore = useBuilderStore();
 const renamingFolder = ref("");

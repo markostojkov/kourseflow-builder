@@ -169,13 +169,12 @@ import vOnClickAndHold from "@/directives/vOnClickAndHold";
 import useBuilderStore from "@/stores/builderStore";
 import { posthog } from "@/telemetry";
 import { BuilderPage } from "@/types/Builder/BuilderPage";
-import { useDark, useEventListener, useStorage, useToggle, watchDebounced } from "@vueuse/core";
+import { useEventListener, useStorage, useToggle, watchDebounced } from "@vueuse/core";
 import { createResource } from "frappe-ui";
-import { onActivated, Ref, ref, watch } from "vue";
+import { onActivated, Ref, ref, watch, computed } from "vue";
 
-const isDark = useDark({
-	attribute: "data-theme",
-});
+// Force light mode - never allow dark mode
+const isDark = computed(() => false);
 const toggleDark = useToggle(isDark);
 const builderStore = useBuilderStore();
 const displayType = useStorage("displayType", "grid") as Ref<"grid" | "list">;

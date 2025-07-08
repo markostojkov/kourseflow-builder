@@ -81,13 +81,13 @@ import usePageStore from "@/stores/pageStore";
 import { BuilderPage } from "@/types/Builder/BuilderPage";
 import { triggerCopyEvent } from "@/utils/helpers";
 
-import { useDark, useToggle } from "@vueuse/core";
+import { useToggle } from "@vueuse/core";
 import { Dropdown } from "frappe-ui";
+import { computed } from "vue";
 
 const pageStore = usePageStore();
-const isDark = useDark({
-	attribute: "data-theme",
-});
+// Force light mode - never allow dark mode
+const isDark = computed(() => false);
 const toggleDark = useToggle(isDark);
 const canvasStore = useCanvasStore();
 

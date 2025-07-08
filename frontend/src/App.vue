@@ -5,7 +5,7 @@
 				<component :is="Component" />
 			</keep-alive>
 		</router-view>
-		<UseDark attribute="data-theme"></UseDark>
+		<!-- Dark mode disabled - always light -->
 		<Toaster :theme="isDark ? 'dark' : 'light'" richColors />
 		<Dialogs></Dialogs>
 		<component v-for="dialog in builderStore.appDialogs" :is="dialog"></component>
@@ -14,8 +14,7 @@
 <script setup lang="ts">
 import useBuilderStore from "@/stores/builderStore";
 import usePageStore from "@/stores/pageStore";
-import { UseDark } from "@vueuse/components";
-import { useDark, useTitle } from "@vueuse/core";
+import { useTitle } from "@vueuse/core";
 import { Dialogs } from "frappe-ui";
 import { computed, provide } from "vue";
 import { useRoute } from "vue-router";
@@ -26,9 +25,8 @@ import { sessionUser } from "./router";
 const builderStore = useBuilderStore();
 const pageStore = usePageStore();
 const route = useRoute();
-const isDark = useDark({
-	attribute: "data-theme",
-});
+// Force light mode - never allow dark mode
+const isDark = computed(() => false);
 
 provide("sessionUser", sessionUser);
 
