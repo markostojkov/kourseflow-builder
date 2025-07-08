@@ -40,6 +40,7 @@ declare module 'vue' {
     Chart: typeof import('./src/components/Icons/Chart.vue')['default']
     Code: typeof import('./src/components/Icons/Code.vue')['default']
     CodeEditor: typeof import('./src/components/Controls/CodeEditor.vue')['default']
+    CollapseSidebar: typeof import('./src/components/Icons/CollapseSidebar.vue')['default']
     CollapsibleSection: typeof import('./src/components/CollapsibleSection.vue')['default']
     ColorInput: typeof import('./src/components/Controls/ColorInput.vue')['default']
     ColorPicker: typeof import('./src/components/Controls/ColorPicker.vue')['default']

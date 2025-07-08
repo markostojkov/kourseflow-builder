@@ -1,11 +1,13 @@
 <template>
 	<div class="flex h-screen">
 		<!-- toolbar -->
-		<DashboardSidebar class="z-30"></DashboardSidebar>
 		<div class="flex w-full flex-1 flex-col overflow-hidden">
 			<div
-				class="toolbar sticky top-0 z-10 flex h-12 items-center justify-end border-b-[1px] border-outline-gray-1 bg-surface-white p-2 px-3 py-1"
+				class="toolbar sticky top-0 z-10 flex h-12 items-center justify-between border-b-[1px] border-outline-gray-1 bg-surface-white p-2 px-3 py-1"
 				ref="toolbar">
+				<a href="/lms/courses">
+					<Button variant="secondary" iconLeft="arrow-left">Back to Course Builder</Button>
+				</a>
 				<router-link
 					:to="{ name: 'builder', params: { pageId: 'new' } }"
 					@click="
@@ -123,7 +125,7 @@
 							<PageCard
 								v-for="page in webPages.data"
 								:selected="selectedPages.has(page.name)"
-								@click.capture="($event) => handleClick($event, page)"
+								@click.capture="($event: MouseEvent) => handleClick($event, page)"
 								:key="page.page_name"
 								:page="page"
 								v-on-click-and-hold="() => enableSelectionMode(page)"></PageCard>
@@ -131,7 +133,7 @@
 						<!-- list -->
 						<div v-if="displayType === 'list'">
 							<PageListItem
-								@click.capture="($event) => handleClick($event, page)"
+								@click.capture="($event: MouseEvent) => handleClick($event, page)"
 								v-for="page in webPages.data"
 								:selected="selectedPages.has(page.name)"
 								:key="page.page_name"
